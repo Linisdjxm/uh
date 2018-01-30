@@ -1,0 +1,42 @@
+#! /bin/sh
+#2018年1月30日15：00写
+#原来就三行
+#结果对它的运行结果不太满意，于是并便改造了一下。
+#在网上百度了一下if的用法和脚本的参数
+#写出了我人生中第一个具有完整功能的shell脚本
+if [ "$#" -eq "1" ];then 
+	if [ "$1" == "--no-reboot" ];then 
+		yum update kernel -y 
+		yum update -y 
+	else if [ "$1" == "--normal" ];then 
+		yum update kernel -y 
+		yum update -y 
+		init 6 
+		else if [ "$1" == "--help" ];then
+			echo "                  help" 
+			echo " --no-reboot :Update and Don't reboot."
+			echo " --normal :Update and reboot."
+			echo " --help :Get help"
+			echo " --about :About this Program."
+			
+			else if [ "$1" == "--about" ];then
+				echo "           Update Helper"
+				echo "            Version 1.0"
+				echo "          Made by Mr. Lv"
+				echo "   Compliance with the GPL V3 protocol."
+				echo "    http://www.gnu.org/licenses/gpl.txt"
+				
+			fi
+		fi
+	fi
+fi
+else
+echo "                  Usage:"
+#echo "           update --no-reboot"
+#echo "           update --normal"
+echo "              update --help"
+fi
+	
+
+
+
